@@ -118,14 +118,14 @@ form {
 }
 
 input[type="submit"] {
-    width: 100px;
+    width: 200px;
     height: 30px;
     border-radius: 4px;
     color: #fff;
     font-size: 0.9rem;
     background: #1e1e1e;
     border: 2px solid #3d3c3c;
-    margin-top: 30px;
+    margin: 30px;
 }
 
 input[type="submit"]:hover {
@@ -200,4 +200,19 @@ input[type="submit"]:active {
 }
 #image {
     display: none;
+}
+
+
+
+/* Style the selected radio button label */
+input[type="radio"] {
+    margin: 5px;
+    /* make radio button bigger */
+    width: 1.5em;
+    height: 1.5em;
+}
+
+/* Style the radio button labels on hover */
+label:hover {
+  background-color: #ddd;
 }
