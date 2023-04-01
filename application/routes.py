@@ -6,7 +6,7 @@ from application import app
 
 @app.route("/")
 def hello_world():
-    return render_template("index.html")  
+    return render_template("index.html")
 
 
 @app.route("/help")
@@ -27,15 +27,18 @@ def show():
         cap = cv2.VideoCapture(name2)
         img_array = []
 
-        for f in trange(500, desc="Processing", bar_format="{desc}: {percentage:3.0f}%"):
+        for f in trange(
+            500, desc="Processing", bar_format="{desc}: {percentage:3.0f}%"
+        ):
             _, img = cap.read()
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 
             for (x, y, w, h) in faces:
                 ROI = img[y : y + h, x : x + w]
-
-                if blur_type == "median":
+                if blur_type == "invisi-blur":
+                    print(ROI)
+                elif blur_type == "median":
                     blur = cv2.medianBlur(ROI, 27)
                 elif blur_type == "gaussian":
                     blur = cv2.GaussianBlur(ROI, (27, 27), 0)
@@ -45,10 +48,14 @@ def show():
                     mosaic_size = max(w, h) // kernel_size
 
                     # Resize the ROI to the mosaic size
-                    resized_ROI = cv2.resize(ROI, (mosaic_size, mosaic_size), interpolation=cv2.INTER_AREA)
+                    resized_ROI = cv2.resize(
+                        ROI, (mosaic_size, mosaic_size), interpolation=cv2.INTER_AREA
+                    )
 
                     # Resize the mosaic back to the original size
-                    mosaic = cv2.resize(resized_ROI, (w, h), interpolation=cv2.INTER_NEAREST)
+                    mosaic = cv2.resize(
+                        resized_ROI, (w, h), interpolation=cv2.INTER_NEAREST
+                    )
 
                     # Apply the mosaic filter to the ROI
                     blur = mosaic
