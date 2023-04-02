@@ -2,6 +2,7 @@ import cv2
 from flask import request, render_template
 from tqdm.gui import trange
 from application import app
+import backup
 
 
 @app.route("/")
@@ -35,9 +36,13 @@ def show():
             faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 
             for (x, y, w, h) in faces:
-                ROI = img[y : y + h, x : x + w]
+                ROI = img[y: y + h, x: x + w]
                 if blur_type == "invisi-blur":
-                    print(ROI)
+                    backup.invisiblur("video.mp4")
+                    return render_template(
+                        "index.html",
+                        info="Anonymized video successfully saved in the folder containing the original video.",
+                    )
                 elif blur_type == "median":
                     blur = cv2.medianBlur(ROI, 27)
                 elif blur_type == "gaussian":
@@ -60,7 +65,7 @@ def show():
                     # Apply the mosaic filter to the ROI
                     blur = mosaic
 
-                img[y : y + h, x : x + w] = blur
+                img[y: y + h, x: x + w] = blur
 
                 height, width, layers = img.shape
                 size = (width, height)
