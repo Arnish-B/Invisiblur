@@ -2,7 +2,7 @@ import cv2
 from flask import request, render_template
 from tqdm.gui import trange
 from application import app
-import backup
+import invisiblur
 
 
 @app.route("/")
@@ -38,7 +38,7 @@ def show():
             for (x, y, w, h) in faces:
                 ROI = img[y: y + h, x: x + w]
                 if blur_type == "invisi-blur":
-                    backup.invisiblur("video.mp4")
+                    invisiblur.blurThis("video.mp4")
                     return render_template(
                         "index.html",
                         info="Anonymized video successfully saved in the folder containing the original video.",
