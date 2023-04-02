@@ -45,10 +45,10 @@ while cap.isOpened():
         if count == 0:
             count = 1
             original = img
-        ##Display the resulting frame
+        # Display the resulting frame
         # cv2.imshow("Frame", img)
 
-        ## Press Q on keyboard to  exit
+        # Press Q on keyboard to  exit
         # if cv2.waitKey(25) & 0xFF == ord("q"):
         #     break
 
@@ -83,9 +83,10 @@ while cap.isOpened():
                 d2 *= -1
                 d3 *= -1
                 d4 *= -1
-            img[p1 + d1 : p2 + d2, p3 + d3 : p4 + d4] = original[
-                p1 + d1 : p2 + d2, p3 + d3 : p4 + d4
+            img[p1 + d1-100: p2 + d2 + 20, p3 + d3 - 100: p4 + d4 + 140] = original[
+                p1 + d1-100: p2 + d2 + 20, p3 + d3 - 100: p4 + d4 + 140
             ]
+            # img[p1+d1:p2+d2, p3+d3:p4+d4] = orignal[p1+d1:p2+d2, p3+d3:p4+d4]
         # if len(faces) != 0 and flag2 == 1:
         #     last_even_p1 = []
         #     last_even_p2 = []
@@ -102,7 +103,11 @@ while cap.isOpened():
             p2 = y + h
             p3 = x
             p4 = x + w
-            img[p1:p2, p3:p4] = original[p1:p2, p3:p4]
+            img[p1-30:p2+20, p3-60:p4+40] = original[p1-30:p2+20, p3-60:p4+40]
+            # p4 right edgs
+            # p3 left edge
+            # p2 bottom edge
+            # p1 upper edge
             if flag == 1:
                 # print(len(ROI), len(ROI[0]))
                 flag = 0
