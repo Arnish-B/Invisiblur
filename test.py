@@ -45,29 +45,29 @@ while cap.isOpened():
 
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.1, 4)
-        if (
-            len(faces) == 0
-            and len(last_even_p1) != 0
-            and len(last_odd_p1) != 0
-            and not_updated < threshold
-        ):
-            not_updated += 1
-            if not_updated > threshold:
-                flag2 = 1
-            for i in range(len(last_even_p1)):
-                d1 = last_even_p1[i] - last_odd_p1[i]
-                d2 = last_even_p2[i] - last_odd_p2[i]
-                d3 = last_even_p3[i] - last_odd_p3[i]
-                d4 = last_even_p4[i] - last_odd_p4[i]
+        # if (
+        #     len(faces) == 0
+        #     and len(last_even_p1) != 0
+        #     and len(last_odd_p1) != 0
+        #     and not_updated < threshold
+        # ):
+        #     not_updated += 1
+        #     if not_updated > threshold:
+        #         flag2 = 1
+        #     for i in range(len(last_even_p1)):
+        #         d1 = last_even_p1[i] - last_odd_p1[i]
+        #         d2 = last_even_p2[i] - last_odd_p2[i]
+        #         d3 = last_even_p3[i] - last_odd_p3[i]
+        #         d4 = last_even_p4[i] - last_odd_p4[i]
 
-                if update_last == "odd":
-                    d1 *= -1
-                    d2 *= -1
-                    d3 *= -1
-                    d4 *= -1
-                img[p1 + d1 : p2 + d2, p3 + d3 : p4 + d4] = original[
-                    p1 + d1 : p2 + d2, p3 + d3 : p4 + d4
-                ]
+        #         if update_last == "odd":
+        #             d1 *= -1
+        #             d2 *= -1
+        #             d3 *= -1
+        #             d4 *= -1
+        #         img[p1 + d1: p2 + d2, p3 + d3: p4 + d4] = original[
+        #             p1 + d1: p2 + d2, p3 + d3: p4 + d4
+        #         ]
         if len(faces) != 0 and flag2 == 1:
             last_even_p1 = []
             last_even_p2 = []
@@ -78,7 +78,7 @@ while cap.isOpened():
             last_odd_p3 = []
             last_odd_p4 = []
             flag2 = 0
-        for (x, y, w, h) in faces:
+        for(x, y, w, h) in faces:
             not_updated = 0
             p1 = y
             p2 = y + h
@@ -99,7 +99,40 @@ while cap.isOpened():
                 last_odd_p1.append(p1)
                 last_odd_p2.append(p3)
                 last_odd_p3.append(p3)
-                last_odd_p4.append(p4)
+
+            if update_last == "even":
+                for i in range(len(last_even_p1)):
+                    d1 = last_even_p1[i] - last_odd_p1[i]
+                    d2 = last_even_p2[i] - last_odd_p2[i]
+                    d3 = last_even_p3[i] - last_odd_p3[i]
+                    d4 = last_even_p4[i] - last_odd_p4[i]
+                    img[p1 + d1: p2 + d2, p3 + d3: p4 + d4] = original[
+                        p1 + d1: p2 + d2, p3 + d3: p4 + d4
+                    ]
+            # img[p1:p2, p3:p4] = original[p1:p2, p3:p4]
+
+        # for (x, y, w, h) in faces:
+        #     not_updated = 0
+        #     p1 = y
+        #     p2 = y + h
+        #     p3 = x
+        #     p4 = x + w
+        #     img[p1:p2, p3:p4] = original[p1:p2, p3:p4]
+        #     if flag == 1:
+        #         # print(len(ROI), len(ROI[0]))
+        #         flag = 0
+        #     if flag % 2 == 0:
+        #         update_last = "even"
+        #         last_even_p1.append(p1)
+        #         last_even_p2.append(p3)
+        #         last_even_p3.append(p3)
+        #         last_even_p4.append(p4)
+        #     else:
+        #         update_last = "odd"
+        #         last_odd_p1.append(p1)
+        #         last_odd_p2.append(p3)
+        #         last_odd_p3.append(p3)
+        #         last_odd_p4.append(p4)
         height, width, layers = img.shape
         size = (width, height)
         img_array.append(img)
