@@ -1,4 +1,4 @@
-# SDN_PROJ
+# Invisiblur
 
 Introduction: This is a Flask project for processing videos to anonymize faces. This project requires certain dependencies to be installed before it can be run. This document provides a step-by-step guide on how to install the dependencies and run the project.
 
