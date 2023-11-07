@@ -33,6 +33,7 @@ def show():
             cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
         )
         cap = cv2.VideoCapture(name2)
+        
         img_array = []
 
         for f in trange(
