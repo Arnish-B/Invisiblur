@@ -10,8 +10,8 @@ def blurThis(the_fileName):
     cap = cv2.VideoCapture(the_fileName)
     # net = cv2.dnn.readNetFromTensorflow("opencv_face_detector_uint8.pbtxt", "opencv_face_detector.pbtxt")
     net = cv2.dnn.readNetFromTensorflow(
-        "/Users/ayushdwiviedi/Desktop/SDN_PROJ/face_recognition_algos/opencv_face_detector_uint8.pb",
-        "/Users/ayushdwiviedi/Desktop/SDN_PROJ/face_recognition_algos/opencv_face_detector.pbtxt",
+        "./opencv_face_detector_uint8.pb",
+        "./opencv_face_detector.pbtxt",
     )
 
     if not cap.isOpened():
