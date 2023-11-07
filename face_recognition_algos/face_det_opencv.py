@@ -21,7 +21,7 @@ def blurThis(the_fileName):
     img_array = []
     count = 0
     original = []
-    threshold = 8
+    threshold = 20
 
     while cap.isOpened():
         ret, img = cap.read()
@@ -45,6 +45,9 @@ def blurThis(the_fileName):
                         [width, height, width, height]
                     )
                     (x, y, w, h) = box.astype(int)
+                    if w>h*1.12:
+                        w=h//2
+                        h = h//2
                     p1 = max(y, 0)
                     p2 = min(y + h, height)
                     p3 = max(x, 0)
