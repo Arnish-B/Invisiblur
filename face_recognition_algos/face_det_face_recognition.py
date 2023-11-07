@@ -14,6 +14,7 @@ def blurThis(the_fileName):
         print("Error opening video stream or file")
 
     img_array = []
+    size= 0
     count = 0
     original = []
     threshold = 8
@@ -76,7 +77,7 @@ def blurThis(the_fileName):
     print(len(img_array))
     cv2.destroyAllWindows()
     out = cv2.VideoWriter(
-        "../videos/processed_videos/face_recogintion_video_processed"
+        "videos/processed_videos/face_recogintion_video_processed"
         + the_fileName[-6:],
         cv2.VideoWriter_fourcc(*"XVID"),
         15,
@@ -89,6 +90,6 @@ def blurThis(the_fileName):
 
 
 # Example usage
-# path = "../videos/test_videos/video_recorded_"
+# path = "videos/test_videos/video_recorded_"
 # test_no = "2"
 # blurThis(path + test_no + ".mp4")

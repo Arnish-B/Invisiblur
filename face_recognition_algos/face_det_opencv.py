@@ -10,8 +10,8 @@ def blurThis(the_fileName):
     cap = cv2.VideoCapture(the_fileName)
     # net = cv2.dnn.readNetFromTensorflow("opencv_face_detector_uint8.pbtxt", "opencv_face_detector.pbtxt")
     net = cv2.dnn.readNetFromTensorflow(
-        "./opencv_face_detector_uint8.pb",
-        "./opencv_face_detector.pbtxt",
+        "face_recognition_algos/opencv_face_detector_uint8.pb",
+        "face_recognition_algos/opencv_face_detector.pbtxt",
     )
 
     if not cap.isOpened():
@@ -80,7 +80,7 @@ def blurThis(the_fileName):
     cv2.destroyAllWindows()
 
     out = cv2.VideoWriter(
-        "../videos/processed_videos/SSD_video_processed" + the_fileName[-6:],
+        "videos/processed_videos/SSD_video_processed" + the_fileName[-6:],
         cv2.VideoWriter_fourcc(*"XVID"),
         15,
         size,
@@ -92,7 +92,7 @@ def blurThis(the_fileName):
 
 
 # # Example usage
-# path = "../videos/test_videos/video_recorded_"
+# path = "videos/test_videos/video_recorded_"
 
 # test_no = "2"
 # blurThis(path + test_no + ".mp4")

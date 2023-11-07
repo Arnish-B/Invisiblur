@@ -17,7 +17,7 @@ print(len(img_array))
 # Closes all the frames
 cv2.destroyAllWindows()
 out = cv2.VideoWriter(
-    "../videos/recorder_video.mp4",
+    "videos/recorder_video.mp4",
     cv2.VideoWriter_fourcc(*"DIVX"),
     15,
     size,

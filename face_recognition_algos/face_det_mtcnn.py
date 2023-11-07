@@ -69,7 +69,7 @@ def blurThis(the_fileName):
     # out = cv2.VideoWriter("video_test_processed.mp4", cv2.VideoWriter_fourcc(*"DIVX"), 15, size)
     # out = cv2.VideoWriter("video_test_processed.mp4", cv2.VideoWriter_fourcc(*"H264"), 15, size)
     out = cv2.VideoWriter(
-        "../videos/processed_videos/mtcnn_video_processed" + the_fileName[-6:],
+        "videos/processed_videos/mtcnn_video_processed" + the_fileName[-6:],
         cv2.VideoWriter_fourcc(*"XVID"),
         15,
         size,
@@ -82,6 +82,6 @@ def blurThis(the_fileName):
 
 # Example usage
 
-# path = "../videos/test_videos/video_recorded_"
+# path = "videos/test_videos/video_recorded_"
 # test_no = "1"
 # blurThis(path + test_no + ".mp4")
