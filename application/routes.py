@@ -38,7 +38,8 @@ def show():
             for (x, y, w, h) in faces:
                 ROI = img[y: y + h, x: x + w]
                 if blur_type == "invisi-blur":
-                    invisiblur.blurThis("video.mp4")
+                    print(name2)
+                    invisiblur.blurThis(name2)
                     return render_template(
                         "index.html",
                         info="Anonymized video successfully saved in the folder containing the original video.",
