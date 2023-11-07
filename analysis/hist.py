@@ -111,7 +111,7 @@ while cap.isOpened():
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
     # Blur the faces using different techniques
-    for (x, y, w, h) in faces:
+    for x, y, w, h in faces:
         face = frame[y : y + h, x : x + w]
         face_roi = frame[y : y + h, x : x + w]
 

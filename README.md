@@ -27,3 +27,19 @@ Running the project:
 6.  The processed video will be saved in the folder containing the original video.
 
 Conclusion: This Flask project can be used to anonymize faces in videos. Follow the above steps to install the dependencies and run the project. For any issues or queries, please refer to the project documentation or contact the project contributors.
+
+We are using the concept of convoluton to make the faces of humans invisible, we follow the following steps:
+
+
+1) We first convert the RGB picture into a greyscale ( from 3X3 to 1X1 for lesser complexity of computation )
+2) We then create a mask that we are going to use for creating a blur in the image.
+3)  We traverse through each pixel and travel 6(arbitary value) pixels in all four directions and average out the greyscale value to obtain 1 value. This will now be used as a reference ( this is where convolution is being done )
+4) We then take the entire video frameby frame and use opencv to detect a face. It gives us a grid pointing to it's edge coordinates
+5) we then take the grid of the face and convolute it the same way that we did earlier ( the 6X6 grid process )
+6) we then compare each pixel value to the initial(blurred) value of the grid ( the convoluted one ). 
+7) If we see a change that exceeds the threshold ( set arbirtarily by us ) we replace that pixel ONLY, with the orignal picture pixel. We need the threshold in order to compensate for noise in the frame.
+8) Once this happens, only the face is turned invisible and hence the video is perfectly anonymised.
+
+
+Using invisiblur, a user can in no way deblur this image as we are essentially erasing data. A normal deblurring software would take a blurred image and using AI tools would analyse each blurred pixel and make an educated guess on what could have been the initial image, all that is not possible in our case as there is no image as such in the processed video.
+
