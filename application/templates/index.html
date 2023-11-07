@@ -60,21 +60,20 @@
 
                         <div class="vid-container">
                             <label for="vid" class="vid-label">Browse</label>
-                            <input type="file" name="vid" idexplain SQL code for BigQuery. I can assist you in creating
-                                queries based on="vid" accept="video/*" />
+                            <input type="file" name="vid" id="vid" accept="video/*" />
                             <p id="vid-name"></p>
                         </div>
                     </div>
 
                     <br />
-                    <input type="radio" name="blur_type" value="median" checked> Median<br>
-                    <input type="radio" name="blur_type" value="gaussian"> Gaussian<br>
-                    <input type="radio" name="blur_type" value="mosaic"> Mosaic<br>
-                    <input type="radio" name="blur_type" value="haarcascade"> Invisi-Blur using haarcascade<br>
-                    <input type="radio" name="blur_type" value="mtcnn"> Invisi-Blur using mtcnn<br>
-                    <input type="radio" name="blur_type" value="dlib"> Invisi-Blur using dlib (best)<br>
-                    <input type="radio" name="blur_type" value="OpenCV"> Invisi-Blur using Open-CV (fastest)<br>
-                    <input type="radio" name="blur_type" value="FaceRecognition"> Invisi-Blur using Face Recognition
+                    <input type="radio" name="face_detection_type" value="haarcascade"> Invisi-Blur using
+                    haarcascade<br>
+                    <input type="radio" name="face_detection_type" value="mtcnn"> Invisi-Blur using mtcnn<br>
+                    <input type="radio" name="face_detection_type" value="dlib"> Invisi-Blur using dlib (best)<br>
+                    <input type="radio" name="face_detection_type" value="OpenCV"> Invisi-Blur using Open-CV
+                    (fastest)<br>
+                    <input type="radio" name="face_detection_type" value="FaceRecognition"> Invisi-Blur using Face
+                    Recognition
                     API<br>
                     <input type="submit" value="Apply">
                 </div>
