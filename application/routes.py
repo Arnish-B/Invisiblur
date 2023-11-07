@@ -8,6 +8,7 @@ from face_recognition_algos import (
     face_det_deepface,
     face_det_mtcnn,
     face_det_opencv,
+    face_det_face_recognition,
 )
 
 
@@ -76,6 +77,13 @@ def show():
                         info="Anonymized video successfully saved in the folder containing the original video.",
                     )
 
+                elif blur_type == "FaceRecognition":
+                    print(name2)
+                    face_det_face_recognition.blurThis(name2)
+                    return render_template(
+                        "index.html",
+                        info="Anonymized video successfully saved in the folder containing the original video.",
+                    )
                 else:
                     # Apply mosaic filter
                     kernel_size = min(w, h) // 20
