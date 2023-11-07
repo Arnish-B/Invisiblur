@@ -55,7 +55,8 @@ def blurThis(the_fileName):
 
                 gray = cv2.cvtColor(original, cv2.COLOR_BGR2GRAY)
                 convolved = cv2.filter2D(
-                    gray, -1, kernel, borderType=cv2.BORDER_REPLICATE)
+                    gray, -1, kernel, borderType=cv2.BORDER_REPLICATE
+                )
                 convolved = cv2.cvtColor(convolved, cv2.COLOR_GRAY2BGR)
                 # Crop the result to the same size as the input frame
                 height, width = original.shape[:2]
@@ -74,7 +75,7 @@ def blurThis(the_fileName):
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 
-            for (x, y, w, h) in faces:
+            for x, y, w, h in faces:
                 not_updated = 0
                 t = 20
 
@@ -88,7 +89,8 @@ def blurThis(the_fileName):
                 subframe = img[p1:p2, p3:p4]
                 gray = cv2.cvtColor(subframe, cv2.COLOR_BGR2GRAY)
                 convolved = cv2.filter2D(
-                    gray, -1, kernel, borderType=cv2.BORDER_REPLICATE)
+                    gray, -1, kernel, borderType=cv2.BORDER_REPLICATE
+                )
                 convolved = cv2.cvtColor(convolved, cv2.COLOR_GRAY2BGR)
                 original_sub_section = original[p1:p2, p3:p4]
                 nonBlured_original_subSection = nonBlured_original[p1:p2, p3:p4]
@@ -107,6 +109,9 @@ def blurThis(the_fileName):
             height, width, layer = img.shape
             size = (width, height)
             img_array.append(img)
+            cv2.imshow("Frame", img)
+            if cv2.waitKey(1) & 0xFF == ord("q"):
+                break
         # Break the loop
         else:
             break
@@ -117,9 +122,18 @@ def blurThis(the_fileName):
     # Closes all the frames
     cv2.destroyAllWindows()
     out = cv2.VideoWriter(
-        "video_test_processed.mp4", cv2.VideoWriter_fourcc(*"DIVX"), 15, size
+        "../videos/processed_videos/haarcascade_video_processed" + the_fileName[-6:],
+        cv2.VideoWriter_fourcc(*"XVID"),
+        15,
+        size,
     )
 
     for i in range(len(img_array)):
         out.write(img_array[i])
     out.release()
+
+
+# Example usage
+path = "../videos/test_videos/video_recorded_"
+test_no = "2"
+blurThis(path + test_no + ".mp4")
