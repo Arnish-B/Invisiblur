@@ -41,13 +41,15 @@ def blurThis(the_fileName):
             for i in range(detections.shape[2]):
                 confidence = detections[0, 0, i, 2]
                 if confidence > 0.5:  # Confidence threshold
-                    box = detections[0, 0, i, 3:7] * np.array([width, height, 1, 1])
+                    # a = detections[0, 0, i, :]
+                    box = detections[0, 0, i, 3:7] * \
+                        np.array([width, height, width, height])
                     (x, y, w, h) = box.astype(int)
 
                     p1 = max(y, 0)
-                    p2 = min(y + h, height)
+                    p2 = min(h, height)
                     p3 = max(x, 0)
-                    p4 = min(x + w, width)
+                    p4 = min(w, width)
 
                     kernel = np.ones((15, 15), dtype=np.float32) / 225.0
 
