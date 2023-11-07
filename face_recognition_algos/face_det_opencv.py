@@ -91,7 +91,8 @@ def blurThis(the_fileName):
     out.release()
 
 
-# Example usage
+# # Example usage
 path = "../videos/test_videos/video_recorded_"
+
 test_no = "2"
 blurThis(path + test_no + ".mp4")
