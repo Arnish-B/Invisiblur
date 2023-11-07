@@ -18,6 +18,7 @@ def blurThis(the_fileName):
     if cap.isOpened() == False:
         print("Error opening video stream or file")
     img_array = []
+    size = 0
     # Read until video is completed
     count = 0
     original = []
@@ -134,6 +135,6 @@ def blurThis(the_fileName):
 
 
 # Example usage
-path = "../videos/test_videos/video_recorded_"
-test_no = "2"
-blurThis(path + test_no + ".mp4")
+# path = "../videos/test_videos/video_recorded_"
+# test_no = "2"
+# blurThis(path + test_no + ".mp4")

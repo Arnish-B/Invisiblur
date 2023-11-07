@@ -92,7 +92,7 @@ def blurThis(the_fileName):
 
 
 # # Example usage
-path = "../videos/test_videos/video_recorded_"
+# path = "../videos/test_videos/video_recorded_"
 
-test_no = "2"
-blurThis(path + test_no + ".mp4")
+# test_no = "2"
+# blurThis(path + test_no + ".mp4")
